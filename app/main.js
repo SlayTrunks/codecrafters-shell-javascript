@@ -9,14 +9,22 @@ const rl = readline.createInterface({
 rl.setPrompt("$ ");
 rl.prompt();
 
+const builtIn = ["exit", "type", "echo"];
 rl.on("line", async (c) => {
   // This event fires every time the user presses Enter after typing something.
   if (c === "exit") return rl.close();
-  if (c.includes("echo")) {
+  else if (c.substring(0, 4) == "echo") {
     const a = c.slice(5);
-    console.log(a)
-  }else{
-  console.log(`${c}: command not found`);
+    console.log(a);
+  } else if (c.substring(0, 4) == "type") {
+    const a = c.substring(5); //same as slice from 5th to last letter of toString()
+    if (builtIn.includes(a)) {
+      console.log(`${a} is a shell builtin`);
+    } else {
+      console.log(`${a}: not found`);
     }
+  } else {
+    console.log(`${c}: command not found`);
+  }
   rl.prompt();
 });

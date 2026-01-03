@@ -6,13 +6,11 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-rl.setPrompt("$ ")
-rl.prompt()
+rl.setPrompt("$ ");
+rl.prompt();
 
-rl.on("line", async(c)=>{ // This event fires every time the user presses Enter after typing something.
-    if(c ==="exit") return rl.close();
-    
-    console.log(`${c}: Command not found`)
-    
-    rl.prompt()
-})
+rl.on("line", async (c) => { // This event fires every time the user presses Enter after typing something.
+  if (c === "exit") return rl.close();
+  console.log(`${c}: command not found`);
+  rl.prompt();
+});

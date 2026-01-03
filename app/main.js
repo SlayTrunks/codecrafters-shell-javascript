@@ -9,11 +9,10 @@ const rl = readline.createInterface({
 rl.setPrompt("$ ")
 rl.prompt()
 
-rl.on("line", async(line)=>{ // This event fires every time the user presses Enter after typing something.
-    if(line=="exit"){
-       return rl.close()
-    }
-    console.log(`${line}: Command not found`)
+rl.on("line", async(c)=>{ // This event fires every time the user presses Enter after typing something.
+    if(c ==="exit") return rl.close();
+    
+    console.log(`${c}: Command not found`)
     
     rl.prompt()
 })
